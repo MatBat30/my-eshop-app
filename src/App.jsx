@@ -16,7 +16,7 @@ const App = () => {
 
     return (
         <>
-            <div className="p-d-flex p-flex-column" style={{ height: '100vh', width: '100vw' }}>
+            <div className="p-d-flex p-flex-column" style={{ height: '100vh', width: '100vw', border: '1px solid darkred' }}>
                 <Header onCategorySelect={handleCategorySelect} />
                 {selectedCategory && <CategoryPage category={selectedCategory} />}
                 <Footer />
