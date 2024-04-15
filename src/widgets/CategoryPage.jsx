@@ -1,7 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import ProductCard from './productCard.jsx';
 
+// eslint-disable-next-line react/prop-types
 const CategoryPage = ({ category }) => {
     const [products, setProducts] = useState([]);
     const [brands, setBrands] = useState([]);
@@ -17,7 +19,7 @@ const CategoryPage = ({ category }) => {
             setBrands(uniqueBrands.map(brand => ({ label: brand, value: brand })));
         };
 
-        fetchProductsByCategory();
+        fetchProductsByCategory().then(r => console.log('Products loaded'));
     }, [category]);  // Le chargement des produits ne dépend que de la catégorie.
 
     const onBrandChange = (e) => {
@@ -29,6 +31,7 @@ const CategoryPage = ({ category }) => {
 
     return (
         <div>
+            {/* eslint-disable-next-line react/prop-types */}
             <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
             <Dropdown value={selectedBrand} options={brands} onChange={onBrandChange} placeholder="Select a Brand" />
             <ProductCard products={filteredProducts}  />
